@@ -1,7 +1,7 @@
 import { addDoc, collection, onSnapshot, orderBy, query, } from "firebase/firestore";
 import { db } from "./firebaseApp";
 
-export const fetchMessages = (setMessages) => {
+export const readMessages = (setMessages) => {
   const messagesRef = collection(db, "messages");
   const q = query(messagesRef, orderBy("timestamp")); // időrend szerint
   const unsubscribe = onSnapshot(q, (snapshot) => {

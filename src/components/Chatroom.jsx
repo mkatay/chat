@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
-import { addMessage, fetchMessages } from "../utils";
+import { addMessage,  readMessages } from "../utils";
 import { Message } from "./Message";
 
 export default function ChatRoom({ user }) {
@@ -9,7 +9,7 @@ export default function ChatRoom({ user }) {
   const messagesEndRef = useRef();
 
   useEffect(() => {
-  const unsubscribe = fetchMessages(setMessages); // elindítjuk a figyelőt
+  const unsubscribe = readMessages(setMessages); // elindítjuk a figyelőt
   return unsubscribe; // cleanup: leállítjuk, amikor a komponens eltűnik
 }, []);
 

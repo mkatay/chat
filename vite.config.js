@@ -10,4 +10,6 @@ export default defineConfig({
       },
     }),
   ],
+   build: {
+    chunkSizeWarningLimit: 1000} // 📦 növeli a warning limitet (1 MB)
 })

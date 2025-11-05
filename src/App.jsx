@@ -3,7 +3,7 @@ import { useState } from 'react';
 import './App.css'
 import { auth } from './firebaseApp';
 import ChatRoom from './components/Chatroom';
-import SignIn from './components/SignIn';
+import {SignIn} from './components/SignIn';
 import { useEffect } from 'react';
 import { signOut } from 'firebase/auth';
 

@@ -1,30 +1,10 @@
-/*import { signInWithPopup } from 'firebase/auth'
-import React from 'react'
-import { auth, provider } from '../firebaseApp'
 
-export const SignIn = () => {
-
-    const handleSignIn=async ()=>{
-        await signInWithPopup(auth,provider)
-    }
-  return (
-    <div className='signin'>
-        <p>Jelentkezz be hogy chatalhess!</p>
-        <button onClick={handleSignIn}>Bejelentkezés Google fiókkal</button>
-    </div>
-  )
-}*/
-import { getAuth, GoogleAuthProvider, signInWithCredential } from 'firebase/auth'; // Ensure signInWithCredential is imported
+import {  GoogleAuthProvider, signInWithCredential } from 'firebase/auth'; // Ensure signInWithCredential is imported
 import { useEffect, useRef } from 'react'; // Assuming React for the component structure
+import { auth } from '../firebaseApp';
 const myClientId=import.meta.env.VITE_MY_WEB_CLIENT_ID
 
-// Assuming 'auth' is exported from your firebase.js or similar file
-// export const auth=getAuth(app)
-// export const provider=new GoogleAuthProvider() // This 'provider' won't be directly used with signInWithPopup anymore
-
-
 export const SignIn = () => {
-    const auth = getAuth(); // Get auth instance here if not globally accessible
     const googleButtonRef = useRef(null); // Ref for the Google button div
 
     useEffect(() => {
@@ -41,9 +21,6 @@ export const SignIn = () => {
                 googleButtonRef.current,
                 { theme: "outline", size: "large", text: "signin_with", shape: "rectangular" } // Customize button appearance
             );
-
-            // You can also prompt for a one-tap sign-in experience
-            // window.google.accounts.id.prompt();
         }
     }, []);
 
@@ -56,6 +33,8 @@ export const SignIn = () => {
 
         try {
             // Sign in to Firebase with the credential
+            console.log("auth config:", auth.app.options);
+
             await signInWithCredential(auth, googleCredential);
             console.log("Successfully signed in with Firebase using Google credential!");
             // Handle successful sign-in (e.g., redirect user)

@@ -9,6 +9,7 @@ import { signOut } from 'firebase/auth';
 
 function App() {
  const [user, setUser] = useState(null);
+console.log(user);
 
   useEffect(() => {
     const unsub = auth.onAuthStateChanged(setUser);

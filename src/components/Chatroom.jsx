@@ -33,8 +33,8 @@ export default function ChatRoom({ user }) {
   return (
     <div className="chat-room">
       <div className="messages">
-        {messages.map((msg, i) => (
-          <Message key={i} msg={msg} currentUid={user.uid} />
+        {messages.map(msg => (
+          <Message key={msg.id} msg={msg} currentUid={user.uid} />
         ))}
         <div ref={messagesEndRef}></div>
       </div>
